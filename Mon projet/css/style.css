@@ -59,6 +59,109 @@ button:hover {
     border-radius: 5px;
 }
 
-.tab-content.active {
-    display: block;
+.header-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 20px;
+}
+
+.content {
+    grid-column: 2;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.ad-left, .ad-right {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.ad-left img, .ad-right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .ad-left, .ad-right {
+        margin-top: 20px;
+    }
+}
+
+.sub-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.sub-button {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 200px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sub-button:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 600px) {
+    .sub-button {
+        flex: 1 1 100%;
+    }
+}
+
+.sub-content {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+}
+
+.sub-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+#backBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#backBtn:hover {
+    background-color: #5a6268;
+}
+
+#sub-title {
+    color: #333;
+    margin-bottom: 10px;
 }
