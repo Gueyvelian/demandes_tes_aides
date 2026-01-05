@@ -61,8 +61,8 @@ button:hover {
 }
 
 .header-image {
-    width: 100%;
-    margin-bottom: 20px;
+    width: 80%;
+    margin: 0 auto 20px;
 }
 
 .header-image img {
@@ -72,22 +72,22 @@ button:hover {
 }
 
 .main-content {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
-    grid-column: 2;
     padding: 20px;
     background-color: #2a2a2a;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .ad-left, .ad-right {
     display: flex;
     justify-content: center;
     align-items: start;
+    margin-bottom: 20px;
 }
 
 .ad-left img, .ad-right img {
@@ -100,9 +100,6 @@ button:hover {
     .main-content {
         display: flex;
         flex-direction: column;
-    }
-    .ad-left, .ad-right {
-        margin-top: 20px;
     }
 }
 
