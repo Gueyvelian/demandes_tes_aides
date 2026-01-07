@@ -9,30 +9,41 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Vos démarches et droits <span id="homeIcon" style="cursor:pointer; font-size: 1.5em;">🏠</span></h1>
+    <header class="main-header">
+        <button class="hamburger" id="hamburger-btn">☰</button>
+        <h1 class="site-title">Vos démarches et droits <span id="homeIcon" style="cursor:pointer; font-size: 1.5em;">🏠</span></h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Rechercher...">
+            <button id="search-btn">🔍</button>
+        </div>
+    </header>
     <div id="premium-ad" class="premium-ad" style="display:none;">
         <p>🔥 Devenez Premium pour accéder à toutes les fonctionnalités sans pubs ! Abonnement mensuel 5,95€ ou annuel 55€. <button id="upgrade-premium-btn">S'abonner</button></p>
     </div>
-    <div class="tabs-container">
-        <button class="tab-nav tab-nav-left">&lt;</button>
-        <nav class="tabs">
-            <button class="tab-button" data-tab="demarche-administrative-en-ligne">Démarche administrative en ligne</button>
-            <button class="tab-button" data-tab="droit-etudiants">Droit des étudiants</button>
-            <button class="tab-button" data-tab="droit-travail">Droit du travail</button>
-            <button class="tab-button" data-tab="motifs-infraction">Motifs d'infraction</button>
-            <button class="tab-button" data-tab="droit-routier">Droit routier</button>
-            <button class="tab-button" data-tab="assurance-demarches-telephoniques">Assurance et démarches téléphoniques</button>
-            <button class="tab-button" data-tab="droit-voyage">Droit en voyage</button>
-            <button class="tab-button" data-tab="outils-gratuits-etudiants">Outils gratuits pour les étudiants</button>
-            <button class="tab-button" data-tab="demarche-retraite">Démarche pour obtenir la retraite</button>
-            <button class="tab-button" data-tab="droit-proprietaires">Droit des propriétaires</button>
-            <button class="tab-button" data-tab="droit-famille">Droit de la famille</button>
-            <button class="tab-button" data-tab="droit-immobilier">Droit immobilier</button>
-            <button class="tab-button premium-only" data-tab="loi-et-justice">Loi et Justice</button>
-            <button class="tab-button" data-tab="connexion">Connexion</button>
-            <button class="tab-button" data-tab="poser-question">Poser une question</button>
+    <aside class="side-menu" id="side-menu">
+        <button class="close-menu" id="close-menu-btn">×</button>
+        <nav class="menu-list">
+            <button class="menu-item" data-tab="accueil">Accueil</button>
+            <button class="menu-item" data-tab="demarche-administrative-en-ligne">Démarche administrative en ligne</button>
+            <button class="menu-item" data-tab="droit-etudiants">Droit des étudiants</button>
+            <button class="menu-item" data-tab="droit-travail">Droit du travail</button>
+            <button class="menu-item" data-tab="motifs-infraction">Motifs d'infraction</button>
+            <button class="menu-item" data-tab="droit-routier">Droit routier</button>
+            <button class="menu-item" data-tab="assurance-demarches-telephoniques">Assurance et démarches téléphoniques</button>
+            <button class="menu-item" data-tab="droit-voyage">Droit en voyage</button>
+            <button class="menu-item" data-tab="outils-gratuits-etudiants">Outils gratuits pour les étudiants</button>
+            <button class="menu-item" data-tab="demarche-retraite">Démarche pour obtenir la retraite</button>
+            <button class="menu-item" data-tab="droit-proprietaires">Droit des propriétaires</button>
+            <button class="menu-item" data-tab="droit-famille">Droit de la famille</button>
+            <button class="menu-item" data-tab="droit-immobilier">Droit immobilier</button>
+            <button class="menu-item premium-only" data-tab="loi-et-justice">Loi et Justice</button>
+            <button class="menu-item" data-tab="connexion">Connexion</button>
+            <button class="menu-item" data-tab="poser-question">Poser une question</button>
         </nav>
-        <button class="tab-nav tab-nav-right">&gt;</button>
+    </aside>
+    <div class="search-results" id="search-results" style="display:none;">
+        <h3>Résultats de recherche :</h3>
+        <ul id="results-list"></ul>
     </div>
     <div id="accueil" class="tab-content">
         <header class="header-image">

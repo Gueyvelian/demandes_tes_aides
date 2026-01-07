@@ -1,10 +1,11 @@
 // Gestion des onglets
 let currentTab = 'accueil';
-const tabButtons = document.querySelectorAll('.tab-button');
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+const menuItems = document.querySelectorAll('.menu-item');
 const tabContents = document.querySelectorAll('.tab-content');
 
 function initializeTabs() {
-    tabButtons.forEach(button => {
+    menuItems.forEach(button => {
         button.addEventListener('click', () => switchTab(button));
     });
 }
@@ -14,12 +15,15 @@ function switchTab(button) {
         alert('Cette section est réservée aux utilisateurs Premium. Abonnez-vous pour y accéder.');
         return;
     }
-    tabButtons.forEach(btn => btn.classList.remove('active'));
+    menuItems.forEach(btn => btn.classList.remove('active'));
     tabContents.forEach(content => content.style.display = 'none');
     button.classList.add('active');
     const tabId = button.getAttribute('data-tab');
     document.getElementById(tabId).style.display = 'block';
     currentTab = tabId;
+
+    // Fermer le menu latéral après sélection
+    document.getElementById('side-menu').classList.remove('open');
 
     // Gestion spéciale pour l'onglet connexion
     if (tabId === 'connexion') {
@@ -37,10 +41,11 @@ initializeTabs();
 document.getElementById('homeIcon').addEventListener('click', goHome);
 
 function goHome() {
-    tabButtons.forEach(btn => btn.classList.remove('active'));
+    menuItems.forEach(btn => btn.classList.remove('active'));
     tabContents.forEach(content => content.style.display = 'none');
     document.getElementById('accueil').style.display = 'block';
     currentTab = 'accueil';
+    document.getElementById('side-menu').classList.remove('open');
 }
 
 // Gestion des sous-catégories
@@ -85,7 +90,6 @@ function showInfo() {
 }
 
 // Gestion de la fonctionnalité "Poser une question"
-let currentUser = null;
 
 function showAuthSectionConnexion() {
     document.getElementById('auth-section-connexion').style.display = 'block';
@@ -96,6 +100,17 @@ function showQuestionSectionConnexion() {
     document.getElementById('auth-section-connexion').style.display = 'none';
     document.getElementById('question-section-connexion').style.display = 'block';
     updatePremiumStatusConnexion(currentUser);
+}
+
+function showQuestionSection(user) {
+    document.getElementById('auth-section').style.display = 'none';
+    document.getElementById('question-section').style.display = 'block';
+    updatePremiumStatus(user);
+}
+
+function showAuthSection() {
+    document.getElementById('auth-section').style.display = 'block';
+    document.getElementById('question-section').style.display = 'none';
 }
 
 function updatePremiumStatusConnexion(user) {
@@ -237,7 +252,7 @@ async function handleLogin(e) {
         });
         const data = await response.json();
         if (response.ok) {
-            currentUser = username;
+            currentUser = data.user;
             showQuestionSection(data.user);
             document.getElementById('login-form').reset();
         } else {
@@ -359,7 +374,7 @@ function handleLogout() {
 const poserQuestionTab = document.querySelector('[data-tab="poser-question"]');
 poserQuestionTab.addEventListener('click', function() {
     if (currentUser) {
-        showQuestionSection();
+        showQuestionSection(currentUser);
     } else {
         showAuthSection();
     }
@@ -432,18 +447,60 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Gestion du carrousel des onglets
-    const tabNavLeft = document.querySelector('.tab-nav-left');
-    const tabNavRight = document.querySelector('.tab-nav-right');
-    const tabs = document.querySelector('.tabs');
+    // Gestion du menu burger
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const sideMenu = document.getElementById('side-menu');
 
-    if (tabNavLeft && tabNavRight && tabs) {
-        tabNavLeft.addEventListener('click', () => {
-            tabs.scrollBy({ left: -200, behavior: 'smooth' });
+    if (hamburgerBtn && closeMenuBtn && sideMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            sideMenu.classList.add('open');
         });
-        tabNavRight.addEventListener('click', () => {
-            tabs.scrollBy({ left: 200, behavior: 'smooth' });
+        closeMenuBtn.addEventListener('click', () => {
+            sideMenu.classList.remove('open');
         });
+    }
+
+    // Gestion de la recherche
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const searchResults = document.getElementById('search-results');
+    const resultsList = document.getElementById('results-list');
+
+    function performSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+        if (!query) {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        const results = [];
+        // Rechercher dans les data-text des sub-buttons
+        document.querySelectorAll('.sub-button').forEach(button => {
+            const text = button.getAttribute('data-text') || '';
+            const title = button.textContent;
+            if (text.toLowerCase().includes(query) || title.toLowerCase().includes(query)) {
+                // Trouver la catégorie parente
+                const tabContent = button.closest('.tab-content');
+                const tabId = tabContent.id;
+                const menuItem = document.querySelector(`.menu-item[data-tab="${tabId}"]`);
+                const category = menuItem ? menuItem.textContent : 'Inconnue';
+                results.push({ category, sub: title, tabId });
+            }
+        });
+
+        if (results.length > 0) {
+            resultsList.innerHTML = results.map(r => `<li><a href="#" onclick="switchToTab('${r.tabId}'); return false;">${r.category} > ${r.sub}</a></li>`).join('');
+            searchResults.style.display = 'block';
+        } else {
+            resultsList.innerHTML = '<li>Aucun résultat trouvé.</li>';
+            searchResults.style.display = 'block';
+        }
+    }
+
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('input', performSearch);
     }
 
     // Event listeners pour l'onglet Connexion
@@ -541,5 +598,51 @@ async function handleQuestionSubmitConnexion(e) {
         }
     } catch (error) {
         alert('Erreur de connexion');
+    }
+}
+
+function switchToTab(tabId) {
+    const button = document.querySelector(`.menu-item[data-tab="${tabId}"]`);
+    if (button) {
+        switchTab(button);
+    }
+}
+
+function performSearch() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const searchResults = document.getElementById('search-results');
+    searchResults.innerHTML = '';
+
+    if (query.length < 2) {
+        searchResults.style.display = 'none';
+        return;
+    }
+
+    const results = [];
+    const subButtons = document.querySelectorAll('.sub-button[data-text]');
+
+    subButtons.forEach(button => {
+        const text = button.getAttribute('data-text').toLowerCase();
+        if (text.includes(query)) {
+            const tabId = button.closest('.tab-content').id;
+            results.push({ text: button.getAttribute('data-text'), tabId, button });
+        }
+    });
+
+    if (results.length > 0) {
+        results.forEach(result => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            resultItem.textContent = result.text;
+            resultItem.addEventListener('click', () => {
+                switchToTab(result.tabId);
+                document.getElementById('search-input').value = '';
+                searchResults.style.display = 'none';
+            });
+            searchResults.appendChild(resultItem);
+        });
+        searchResults.style.display = 'block';
+    } else {
+        searchResults.style.display = 'none';
     }
 }
