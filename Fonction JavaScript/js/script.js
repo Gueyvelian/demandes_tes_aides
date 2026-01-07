@@ -10,6 +10,10 @@ function initializeTabs() {
 }
 
 function switchTab(button) {
+    if (button.classList.contains('premium-only') && button.classList.contains('disabled')) {
+        alert('Cette section est réservée aux utilisateurs Premium. Abonnez-vous pour y accéder.');
+        return;
+    }
     tabButtons.forEach(btn => btn.classList.remove('active'));
     tabContents.forEach(content => content.style.display = 'none');
     button.classList.add('active');
@@ -60,6 +64,10 @@ function goBack() {
 // Initial display
 document.getElementById('accueil').style.display = 'block';
 
+// Initialiser les onglets premium comme désactivés
+const premiumTabs = document.querySelectorAll('.premium-only');
+premiumTabs.forEach(tab => tab.classList.add('disabled'));
+
 // Bouton d'infos
 document.getElementById('infoBtn').addEventListener('click', showInfo);
 
@@ -89,6 +97,16 @@ function updatePremiumStatus(user) {
     const annualBtn = document.getElementById('premium-annual-btn');
     const questionForm = document.getElementById('question-form');
     const paymentPrompt = document.getElementById('payment-prompt');
+
+    // Mettre à jour les onglets premium
+    const premiumTabs = document.querySelectorAll('.premium-only');
+    premiumTabs.forEach(tab => {
+        if (premiumActive) {
+            tab.classList.remove('disabled');
+        } else {
+            tab.classList.add('disabled');
+        }
+    });
 
     if (premiumActive) {
         premiumStatus.textContent = `Vous êtes Premium ${user.premium_type} (actif jusqu'au ${new Date(user.premium_expiry).toLocaleDateString()}).`;

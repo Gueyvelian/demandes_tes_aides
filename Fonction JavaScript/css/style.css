@@ -184,3 +184,9 @@ input, textarea {
 textarea {
     height: 100px;
 }
+
+.premium-only.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
