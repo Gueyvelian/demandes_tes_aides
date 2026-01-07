@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Vos démarches et droits <span id="homeIcon" style="cursor:pointer; font-size: 1.5em;">🏠</span></h1>
+    <div id="premium-ad" class="premium-ad" style="display:none;">
+        <p>🔥 Devenez Premium pour accéder à toutes les fonctionnalités sans pubs ! Abonnement mensuel 5,95€ ou annuel 55€. <button id="upgrade-premium-btn">S'abonner</button></p>
+    </div>
     <nav class="tabs">
         <button class="tab-button" data-tab="demarche-administrative-en-ligne">Démarche administrative en ligne</button>
         <button class="tab-button" data-tab="droit-etudiants">Droit des étudiants</button>
@@ -243,6 +246,29 @@
         <h3 id="sub-title"></h3>
         <div class="sub-content"></div>
         <button id="backBtn">Retour</button>
+    </div>
+
+    <!-- Modal pour création de compte -->
+    <div id="account-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Créer un compte</h2>
+            <form id="modal-register-form">
+                <input type="text" id="modal-reg-username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="modal-reg-password" placeholder="Mot de passe" required>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal pour popup initiale -->
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <h2>Bienvenue sur notre plateforme !</h2>
+            <p>Créez un compte pour accéder à toutes les fonctionnalités ou allez directement à l'accueil.</p>
+            <button id="create-account-btn">Créer un compte</button>
+            <button id="go-home-btn">Aller à l'accueil</button>
+        </div>
     </div>
 
     <script src="js/script.js"></script>

@@ -108,6 +108,17 @@ function updatePremiumStatus(user) {
         }
     });
 
+    // Gérer les pubs
+    const ads = document.querySelectorAll('.ad-left, .ad-right');
+    const premiumAd = document.getElementById('premium-ad');
+    if (premiumActive) {
+        ads.forEach(ad => ad.style.display = 'none');
+        premiumAd.style.display = 'none';
+    } else {
+        ads.forEach(ad => ad.style.display = 'block');
+        premiumAd.style.display = 'block';
+    }
+
     if (premiumActive) {
         premiumStatus.textContent = `Vous êtes Premium ${user.premium_type} (actif jusqu'au ${new Date(user.premium_expiry).toLocaleDateString()}).`;
         monthlyBtn.style.display = 'none';
@@ -312,4 +323,72 @@ poserQuestionTab.addEventListener('click', function() {
     } else {
         showAuthSection();
     }
+});
+
+// Gestionnaire pour le modal de bienvenue (popup de création de compte)
+document.addEventListener('DOMContentLoaded', function() {
+    const welcomeModal = document.getElementById('welcome-modal');
+    const accountModal = document.getElementById('account-modal');
+    const closeWelcomeBtn = document.getElementById('close-welcome');
+    const createAccountBtn = document.getElementById('create-account-btn');
+    const registerForm = document.getElementById('register-form');
+    const closeAccountBtn = document.getElementById('close-account');
+
+    // Afficher le modal de bienvenue si pas connecté
+    if (!currentUser) {
+        welcomeModal.style.display = 'block';
+    }
+
+    // Fermer le modal de bienvenue
+    closeWelcomeBtn.addEventListener('click', function() {
+        welcomeModal.style.display = 'none';
+    });
+
+    // Ouvrir le modal de création de compte
+    createAccountBtn.addEventListener('click', function() {
+        welcomeModal.style.display = 'none';
+        accountModal.style.display = 'block';
+    });
+
+    // Fermer le modal de création de compte
+    closeAccountBtn.addEventListener('click', function() {
+        accountModal.style.display = 'none';
+    });
+
+    // Soumettre le formulaire d'inscription
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('register-username').value;
+        const password = document.getElementById('register-password').value;
+
+        fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert('Compte créé avec succès ! Vous pouvez maintenant vous connecter.');
+                accountModal.style.display = 'none';
+                showAuthSection();
+            } else {
+                alert('Erreur : ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Erreur lors de l\'inscription:', error);
+            alert('Erreur lors de l\'inscription.');
+        });
+    });
+
+    // Fermer les modals en cliquant en dehors
+    window.addEventListener('click', function(event) {
+        if (event.target === welcomeModal) {
+            welcomeModal.style.display = 'none';
+        }
+        if (event.target === accountModal) {
+            accountModal.style.display = 'none';
+        }
+    });
 });
