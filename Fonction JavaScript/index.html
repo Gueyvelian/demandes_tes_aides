@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Mon site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -10,22 +13,27 @@
     <div id="premium-ad" class="premium-ad" style="display:none;">
         <p>🔥 Devenez Premium pour accéder à toutes les fonctionnalités sans pubs ! Abonnement mensuel 5,95€ ou annuel 55€. <button id="upgrade-premium-btn">S'abonner</button></p>
     </div>
-    <nav class="tabs">
-        <button class="tab-button" data-tab="demarche-administrative-en-ligne">Démarche administrative en ligne</button>
-        <button class="tab-button" data-tab="droit-etudiants">Droit des étudiants</button>
-        <button class="tab-button" data-tab="droit-travail">Droit du travail</button>
-        <button class="tab-button" data-tab="motifs-infraction">Motifs d'infraction</button>
-        <button class="tab-button" data-tab="droit-routier">Droit routier</button>
-        <button class="tab-button" data-tab="assurance-demarches-telephoniques">Assurance et démarches téléphoniques</button>
-        <button class="tab-button" data-tab="droit-voyage">Droit en voyage</button>
-        <button class="tab-button" data-tab="outils-gratuits-etudiants">Outils gratuits pour les étudiants</button>
-        <button class="tab-button" data-tab="demarche-retraite">Démarche pour obtenir la retraite</button>
-        <button class="tab-button" data-tab="droit-proprietaires">Droit des propriétaires</button>
-        <button class="tab-button" data-tab="droit-famille">Droit de la famille</button>
-        <button class="tab-button" data-tab="droit-immobilier">Droit immobilier</button>
-        <button class="tab-button premium-only" data-tab="loi-et-justice">Loi et Justice</button>
-        <button class="tab-button" data-tab="poser-question">Poser une question</button>
-    </nav>
+    <div class="tabs-container">
+        <button class="tab-nav tab-nav-left">&lt;</button>
+        <nav class="tabs">
+            <button class="tab-button" data-tab="demarche-administrative-en-ligne">Démarche administrative en ligne</button>
+            <button class="tab-button" data-tab="droit-etudiants">Droit des étudiants</button>
+            <button class="tab-button" data-tab="droit-travail">Droit du travail</button>
+            <button class="tab-button" data-tab="motifs-infraction">Motifs d'infraction</button>
+            <button class="tab-button" data-tab="droit-routier">Droit routier</button>
+            <button class="tab-button" data-tab="assurance-demarches-telephoniques">Assurance et démarches téléphoniques</button>
+            <button class="tab-button" data-tab="droit-voyage">Droit en voyage</button>
+            <button class="tab-button" data-tab="outils-gratuits-etudiants">Outils gratuits pour les étudiants</button>
+            <button class="tab-button" data-tab="demarche-retraite">Démarche pour obtenir la retraite</button>
+            <button class="tab-button" data-tab="droit-proprietaires">Droit des propriétaires</button>
+            <button class="tab-button" data-tab="droit-famille">Droit de la famille</button>
+            <button class="tab-button" data-tab="droit-immobilier">Droit immobilier</button>
+            <button class="tab-button premium-only" data-tab="loi-et-justice">Loi et Justice</button>
+            <button class="tab-button" data-tab="connexion">Connexion</button>
+            <button class="tab-button" data-tab="poser-question">Poser une question</button>
+        </nav>
+        <button class="tab-nav tab-nav-right">&gt;</button>
+    </div>
     <div id="accueil" class="tab-content">
         <header class="header-image">
             <img src="https://via.placeholder.com/800x200/007bff/ffffff?text=Plateforme+d%27Aide+Administrative" alt="Image d'entête">
@@ -203,6 +211,39 @@
                 <button class="sub-button" data-sub="droit-international" title="Régit les relations entre États et organisations internationales." data-text="Le droit international régit les relations entre États. Lois clés : Conventions internationales, droit coutumier. <br><br><strong>Lois strictes à connaître :</strong><br>- Article 38 du Statut de la CIJ : Sources du droit international.<br>- Convention de Vienne sur le droit des traités (1969).<br>- Charte des Nations Unies (Chapitre VII : Action en cas de menace contre la paix).<br>- Convention européenne des droits de l'homme.<br>- Droit humanitaire (Conventions de Genève).<br><br><strong>Conseils pour le barreau :</strong> Comprenez les sources (traités, coutume), la responsabilité internationale et les organisations internationales (ONU, UE).">🌍 Droit international</button>
             </div>
             <div class="sub-content"></div>
+        </section>
+    </div>
+
+    <div id="connexion" class="tab-content">
+        <section>
+            <h3>Connexion / Inscription</h3>
+            <div id="auth-section">
+                <h4>Se connecter</h4>
+                <form id="login-form">
+                    <input type="text" id="login-username" placeholder="Nom d'utilisateur" required>
+                    <input type="password" id="login-password" placeholder="Mot de passe" required>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <h4>Créer un compte</h4>
+                <form id="register-form">
+                    <input type="text" id="register-username" placeholder="Nom d'utilisateur" required>
+                    <input type="password" id="register-password" placeholder="Mot de passe" required>
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div id="question-section" style="display:none;">
+                <h4>Poser une question</h4>
+                <form id="question-form">
+                    <textarea id="question-text" placeholder="Votre question..." required></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+                <div id="payment-prompt" style="display:none;">
+                    <p>Vous avez atteint la limite de 2 questions gratuites. Passez Premium pour poser plus de questions.</p>
+                    <button id="premium-monthly-btn">Premium Mensuel (5,95€)</button>
+                    <button id="premium-annual-btn">Premium Annuel (55€)</button>
+                </div>
+            </div>
+            <div id="premium-status"></div>
         </section>
     </div>
 

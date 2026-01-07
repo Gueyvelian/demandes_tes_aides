@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 20px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -38,7 +38,7 @@ ul li {
 
 button {
     padding: 12px 24px;
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    background: linear-gradient(135deg, #4dabf7 0%, #007bff 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -46,37 +46,80 @@ button {
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 2px 4px rgba(77, 171, 247, 0.3);
 }
 
 button:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
 }
+.tabs-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
 .tabs {
     display: flex;
-    margin-bottom: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     background-color: #ffffff;
     border-radius: 12px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
 }
 
 .tab-button {
-    flex: 1;
-    padding: 15px 20px;
+    flex: 0 0 auto;
+    min-width: 180px;
+    padding: 20px 15px;
     background-color: #ecf0f1;
     color: #34495e;
     border: none;
     cursor: pointer;
     border-radius: 8px;
-    margin: 0 5px;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tab-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 123, 255, 0.8);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.tab-nav:hover {
+    background: rgba(0, 123, 255, 1);
+}
+
+.tab-nav-left {
+    left: 5px;
+}
+
+.tab-nav-right {
+    right: 5px;
 }
 
 .tab-button::before {
@@ -199,6 +242,46 @@ button:hover {
     overflow: hidden;
 }
 
+.sub-button::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    margin-bottom: 5px;
+}
+
+.sub-button::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    margin-bottom: -5px;
+}
+
+.sub-button:hover::after,
+.sub-button:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
 .sub-button::before {
     content: '';
     position: absolute;
@@ -216,9 +299,10 @@ button:hover {
 
 .sub-button:hover {
     border-color: #007bff;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
-    color: #007bff;
 }
 
 @media (max-width: 600px) {
@@ -236,6 +320,10 @@ button:hover {
     color: #495057;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: slideIn 0.5s ease;
+}
+
+.sub-content:empty {
+    display: none;
 }
 
 @keyframes slideIn {

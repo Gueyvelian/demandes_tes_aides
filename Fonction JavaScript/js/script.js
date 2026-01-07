@@ -20,6 +20,15 @@ function switchTab(button) {
     const tabId = button.getAttribute('data-tab');
     document.getElementById(tabId).style.display = 'block';
     currentTab = tabId;
+
+    // Gestion spéciale pour l'onglet connexion
+    if (tabId === 'connexion') {
+        if (currentUser) {
+            showQuestionSectionConnexion();
+        } else {
+            showAuthSectionConnexion();
+        }
+    }
 }
 
 initializeTabs();
@@ -78,16 +87,47 @@ function showInfo() {
 // Gestion de la fonctionnalité "Poser une question"
 let currentUser = null;
 
-function showAuthSection() {
-    document.getElementById('auth-section').style.display = 'block';
-    document.getElementById('question-section').style.display = 'none';
+function showAuthSectionConnexion() {
+    document.getElementById('auth-section-connexion').style.display = 'block';
+    document.getElementById('question-section-connexion').style.display = 'none';
 }
 
-function showQuestionSection(user) {
-    document.getElementById('auth-section').style.display = 'none';
-    document.getElementById('question-section').style.display = 'block';
-    document.getElementById('user-display').textContent = currentUser;
-    updatePremiumStatus(user);
+function showQuestionSectionConnexion() {
+    document.getElementById('auth-section-connexion').style.display = 'none';
+    document.getElementById('question-section-connexion').style.display = 'block';
+    updatePremiumStatusConnexion(currentUser);
+}
+
+function updatePremiumStatusConnexion(user) {
+    const premiumActive = isPremiumActive(user);
+    const premiumStatus = document.getElementById('premium-status-connexion');
+    const monthlyBtn = document.getElementById('premium-monthly-btn-connexion');
+    const annualBtn = document.getElementById('premium-annual-btn-connexion');
+    const questionForm = document.getElementById('question-form-connexion');
+    const paymentPrompt = document.getElementById('payment-prompt-connexion');
+
+    if (premiumActive) {
+        premiumStatus.textContent = `Vous êtes Premium ${user.premium_type} (actif jusqu'au ${new Date(user.premium_expiry).toLocaleDateString()}).`;
+        monthlyBtn.style.display = 'none';
+        annualBtn.style.display = 'none';
+        questionForm.style.display = 'block';
+        paymentPrompt.style.display = 'none';
+    } else {
+        if (user.premium) {
+            premiumStatus.textContent = 'Votre Premium a expiré. Renouvelez-le.';
+        } else {
+            premiumStatus.textContent = 'Vous n\'êtes pas Premium.';
+        }
+        monthlyBtn.style.display = 'inline-block';
+        annualBtn.style.display = 'inline-block';
+        if (user.questions_asked >= 2) {
+            questionForm.style.display = 'none';
+            paymentPrompt.style.display = 'block';
+        } else {
+            questionForm.style.display = 'block';
+            paymentPrompt.style.display = 'none';
+        }
+    }
 }
 
 function updatePremiumStatus(user) {
@@ -391,4 +431,115 @@ document.addEventListener('DOMContentLoaded', function() {
             accountModal.style.display = 'none';
         }
     });
+
+    // Gestion du carrousel des onglets
+    const tabNavLeft = document.querySelector('.tab-nav-left');
+    const tabNavRight = document.querySelector('.tab-nav-right');
+    const tabs = document.querySelector('.tabs');
+
+    if (tabNavLeft && tabNavRight && tabs) {
+        tabNavLeft.addEventListener('click', () => {
+            tabs.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        tabNavRight.addEventListener('click', () => {
+            tabs.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+    }
+
+    // Event listeners pour l'onglet Connexion
+    const loginFormConnexion = document.getElementById('login-form-connexion');
+    if (loginFormConnexion) {
+        loginFormConnexion.addEventListener('submit', handleLoginConnexion);
+    }
+
+    const registerFormConnexion = document.getElementById('register-form-connexion');
+    if (registerFormConnexion) {
+        registerFormConnexion.addEventListener('submit', handleRegisterConnexion);
+    }
+
+    const questionFormConnexion = document.getElementById('question-form-connexion');
+    if (questionFormConnexion) {
+        questionFormConnexion.addEventListener('submit', handleQuestionSubmitConnexion);
+    }
+
+    const premiumMonthlyBtnConnexion = document.getElementById('premium-monthly-btn-connexion');
+    if (premiumMonthlyBtnConnexion) {
+        premiumMonthlyBtnConnexion.addEventListener('click', () => handlePremium('monthly'));
+    }
+
+    const premiumAnnualBtnConnexion = document.getElementById('premium-annual-btn-connexion');
+    if (premiumAnnualBtnConnexion) {
+        premiumAnnualBtnConnexion.addEventListener('click', () => handlePremium('annual'));
+    }
 });
+
+async function handleLoginConnexion(e) {
+    e.preventDefault();
+    const username = document.getElementById('login-username-connexion').value;
+    const password = document.getElementById('login-password-connexion').value;
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            currentUser = data.user.username;
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            showQuestionSectionConnexion();
+            document.getElementById('login-form-connexion').reset();
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erreur de connexion');
+    }
+}
+
+async function handleRegisterConnexion(e) {
+    e.preventDefault();
+    const username = document.getElementById('register-username-connexion').value;
+    const password = document.getElementById('register-password-connexion').value;
+    try {
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            alert('Compte créé avec succès ! Vous pouvez maintenant vous connecter.');
+            document.getElementById('register-form-connexion').reset();
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erreur d\'inscription');
+    }
+}
+
+async function handleQuestionSubmitConnexion(e) {
+    e.preventDefault();
+    const question = document.getElementById('question-text-connexion').value;
+    try {
+        const response = await fetch('/question', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: currentUser, question })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            alert('Question envoyée avec succès.');
+            document.getElementById('question-text-connexion').value = '';
+        } else if (response.status === 403) {
+            document.getElementById('question-form-connexion').style.display = 'none';
+            document.getElementById('payment-prompt-connexion').style.display = 'block';
+            alert(data.error);
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erreur de connexion');
+    }
+}
