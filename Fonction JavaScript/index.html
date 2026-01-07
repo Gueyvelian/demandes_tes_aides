@@ -20,6 +20,7 @@
         <button class="tab-button" data-tab="droit-proprietaires">Droit des propriétaires</button>
         <button class="tab-button" data-tab="droit-famille">Droit de la famille</button>
         <button class="tab-button" data-tab="droit-immobilier">Droit immobilier</button>
+        <button class="tab-button" data-tab="poser-question">Poser une question</button>
     </nav>
     <div id="accueil" class="tab-content">
         <header class="header-image">
@@ -152,6 +153,42 @@
         <section>
             <h3>Droit immobilier</h3>
             <p>Achat, vente, location de biens immobiliers.</p>
+        </section>
+    </div>
+
+    <div id="poser-question" class="tab-content">
+        <section>
+            <h3>Poser une question</h3>
+            <div id="auth-section">
+                <h4>Créer un compte</h4>
+                <form id="register-form">
+                    <input type="text" id="reg-username" placeholder="Nom d'utilisateur" required>
+                    <input type="password" id="reg-password" placeholder="Mot de passe" required>
+                    <button type="submit">S'inscrire</button>
+                </form>
+                <h4>Se connecter</h4>
+                <form id="login-form">
+                    <input type="text" id="login-username" placeholder="Nom d'utilisateur" required>
+                    <input type="password" id="login-password" placeholder="Mot de passe" required>
+                    <button type="submit">Se connecter</button>
+                </form>
+            </div>
+            <div id="question-section" style="display:none;">
+                <p>Vous êtes connecté en tant que <span id="user-display"></span> <button id="logout-btn">Se déconnecter</button></p>
+                <div id="premium-section">
+                    <p id="premium-status"></p>
+                    <button id="premium-monthly-btn" style="display:none;">Devenir Premium Mensuel (5,95€/mois)</button>
+                    <button id="premium-annual-btn" style="display:none;">Devenir Premium Annuel (55€/an)</button>
+                </div>
+                <form id="question-form">
+                    <textarea id="question-text" placeholder="Posez votre question ici..." required></textarea>
+                    <button type="submit">Envoyer la question</button>
+                </form>
+                <div id="payment-prompt" style="display:none;">
+                    <p>Vous avez dépassé les 2 questions gratuites. Payez 3,80€ pour poser une question supplémentaire.</p>
+                    <button id="pay-question-btn">Payer 3,80€</button>
+                </div>
+            </div>
         </section>
     </div>
 

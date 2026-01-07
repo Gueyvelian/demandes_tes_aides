@@ -2,11 +2,15 @@
 
 Bienvenue sur cette plateforme d'aide administrative ! Ce site web est conçu pour vous accompagner dans vos démarches administratives en France. Que vous soyez étudiant, salarié, voyageur ou propriétaire, vous trouverez ici des guides pratiques, des conseils juridiques et des informations essentielles pour simplifier vos procédures officielles.
 
-## Fonctionnalités principales
+## Fonctionnalités
 
-- **Navigation par onglets** : Cliquez sur les onglets en haut de la page pour accéder aux différentes catégories de démarches.
-- **Informations détaillées** : Chaque onglet contient des sous-sections avec des boutons pour obtenir des explications spécifiques sur des sujets comme les aides financières, les droits du travail, les formalités de voyage, etc.
-- **Conseils pratiques** : Découvrez des étapes claires pour effectuer vos démarches, des liens vers des services officiels et des astuces pour éviter les erreurs courantes.
+- Onglet "Poser une question" avec création de compte, connexion, et pose de questions.
+- Les 2 premières questions sont gratuites, puis 3,80€ par question supplémentaire.
+- Compte Premium mensuel : 5,95€/mois, permet de poser des questions illimitées.
+- Compte Premium annuel : 55€/an, permet de poser des questions illimitées.
+- Après 12 renouvellements mensuels, un mois gratuit est offert.
+- Limite de 2 comptes par ordinateur (basé sur l'adresse IP).
+- Base de données SQLite pour persister les données.
 
 ## Catégories disponibles
 
@@ -67,3 +71,23 @@ Voici une présentation détaillée des catégories disponibles sur la plateform
 5. Cliquez sur l'icône maison (🏠) pour retourner à l'accueil à tout moment.
 
 Ce site est une ressource gratuite pour vous aider à naviguer dans le monde des administrations françaises. Pour des conseils personnalisés, consultez les sites officiels mentionnés dans les descriptions.
+
+## Installation et exécution du serveur
+
+Pour utiliser la fonctionnalité "Poser une question" avec base de données :
+
+1. Assurez-vous d'avoir Node.js installé (https://nodejs.org/).
+
+2. Installez les dépendances :
+   ```
+   npm install
+   ```
+
+3. Démarrez le serveur :
+   ```
+   npm start
+   ```
+
+4. Ouvrez votre navigateur à http://localhost:3000.
+
+La base de données SQLite sera créée automatiquement.
