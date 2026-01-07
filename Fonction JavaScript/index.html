@@ -11,7 +11,7 @@
 <body>
     <header class="main-header">
         <button class="hamburger" id="hamburger-btn">☰</button>
-        <h1 class="site-title">Vos démarches et droits <span id="homeIcon" style="cursor:pointer; font-size: 1.5em;">🏠</span></h1>
+        <h1 class="site-title">Vos démarches et droits<span id="homeIcon" style="cursor:pointer; font-size: 1.5em;">🏠</span></h1>
         <div class="search-container">
             <input type="text" id="search-input" placeholder="Rechercher...">
             <button id="search-btn">🔍</button>
@@ -46,27 +46,20 @@
         <ul id="results-list"></ul>
     </div>
     <div id="accueil" class="tab-content">
-        <header class="header-image">
-            <img src="https://via.placeholder.com/800x200/007bff/ffffff?text=Plateforme+d%27Aide+Administrative" alt="Image d'entête">
-        </header>
-        <div class="main-content">
-            <aside class="ad-left">
-                <img src="https://via.placeholder.com/200x300/28a745/ffffff?text=Plante+1" alt="Publicité 1">
-            </aside>
-            <section class="content">
-                <h2>But de l'application</h2>
-                <p>Cette plateforme vous aide à naviguer dans vos démarches administratives en France. Découvrez des guides pratiques, des conseils juridiques et des outils pour simplifier vos procédures officielles. Que ce soit pour les impôts, les aides sociales ou les droits du travail, nous sommes là pour vous accompagner étape par étape.</p>
-                <button id="infoBtn">Obtenir plus d'infos</button>
-            </section>
-            <aside class="ad-right">
-                <img src="https://via.placeholder.com/200x300/28a745/ffffff?text=Plante+2" alt="Publicité 2">
-            </aside>
+        <div class="header-section">
+            <img src="logo.jpg" alt="Logo Application" class="logo">
+            <img src="bandeau.jpg" alt="Bandeau de page" class="header-img">
         </div>
+        <section class="content">
+            <h2>But de l'application</h2>
+            <p>Cette plateforme vous aide à naviguer dans vos démarches administratives en France. Découvrez des guides pratiques, des conseils juridiques et des outils pour simplifier vos procédures officielles. Que ce soit pour les impôts, les aides sociales ou les droits du travail, nous sommes là pour vous accompagner étape par étape. <a href="#" class="connexion-link">Connexion</a> | <a href="#" class="premium-link">Passer à Premium</a></p>
+            <button id="infoBtn">Obtenir plus d'infos</button>
+        </section>
     </div>
     <div id="demarche-administrative-en-ligne" class="tab-content">
-        <section>
-            <h3>Démarche administrative en ligne</h3>
-            <p>Informations sur les procédures administratives disponibles en ligne, comme les demandes de documents officiels.</p>
+        <section class="content">
+            <h2>Démarche administrative en ligne</h2>
+            <p>Informations sur les procédures administratives disponibles en ligne, comme les demandes de documents officiels. <a href="#" class="connexion-link">Connexion</a> | <a href="#" class="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="aide-allocation-logement" title="Aide financière pour réduire le montant du loyer des locataires éligibles." data-text="L'aide à l'allocation logement (APL) est une aide financière pour réduire le montant de votre loyer. Elle est calculée en fonction de vos ressources et de votre situation familiale. Pour en bénéficier, faites une demande en ligne sur le site de la CAF. Visitez <a href='https://www.caf.fr/allocations-et-aides/quelle-aide-pour-le-logement' target='_blank'>le site de la CAF</a> pour plus d'informations et pour faire votre demande. <br><br><strong>Guide étape par étape pour faire votre demande d'APL :</strong><br>1. Rendez-vous sur le site de la CAF et créez un compte ou connectez-vous avec vos identifiants.<br>2. Simulez votre éligibilité à l'APL en entrant vos informations personnelles et financières.<br>3. Si éligible, soumettez votre demande en ligne en fournissant les justificatifs requis (avis d'imposition, contrat de location, etc.).<br>4. Suivez l'état de votre dossier dans votre espace personnel et attendez la validation.<br><br><strong>Conditions d'éligibilité :</strong> Être locataire, avoir des ressources inférieures à un plafond, résider dans un logement conventionné.<br><strong>Montant :</strong> Variable selon les ressources, peut couvrir jusqu'à 70% du loyer.<br><strong>Conseils :</strong> Pensez à renouveler votre demande chaque année et informez la CAF de tout changement de situation.">🏠 Aide allocation logement</button>
                 <button class="sub-button" data-sub="prime-activite" title="Aide versée aux travailleurs modestes pour compléter leurs revenus." data-text="La prime d'activité est une aide versée par la CAF ou la MSA pour compléter vos revenus si vous travaillez. Elle dépend de vos ressources et de votre composition familiale. Simulez votre éligibilité en ligne. Pour plus de détails et pour faire une demande, consultez <a href='https://www.caf.fr/aides-et-services/s-informer-sur-les-aides/prime-d-activite' target='_blank'>le site de la CAF</a>. <br><br><strong>Guide étape par étape pour faire votre demande de prime d'activité :</strong><br>1. Accédez au site de la CAF et connectez-vous à votre compte.<br>2. Utilisez le simulateur de prime d'activité pour estimer le montant.<br>3. Soumettez votre demande en ligne avec vos bulletins de salaire et avis d'imposition.<br>4. Vérifiez régulièrement votre espace pour les mises à jour et paiements.<br><br><strong>Conditions :</strong> Travailler au moins 1 heure par semaine, ressources inférieures à un plafond.<br><strong>Montant :</strong> Variable, peut aller jusqu'à 500€/mois pour une personne seule.<br><strong>Conseils :</strong> Déclarez tout changement de salaire rapidement pour ajuster le montant.">💰 Prime d'activité</button>
@@ -79,9 +72,9 @@
         </section>
     </div>
     <div id="droit-etudiants" class="tab-content">
-        <section>
-            <h3>Droit des étudiants</h3>
-            <p>Informations sur les droits des étudiants, bourses, logement, etc. Voici une liste exhaustive des aides possibles pour les étudiants en France, avec les conditions d'éligibilité.</p>
+        <section class="content">
+            <h2>Droit des étudiants</h2>
+            <p>Informations sur les droits des étudiants, bourses, logement, etc. Voici une liste exhaustive des aides possibles pour les étudiants en France, avec les conditions d'éligibilité. <a href="#" class="connexion-link">Connexion</a> | <a href="#" class="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="bourses-criteres-sociaux" data-text="Les bourses sur critères sociaux sont accordées en fonction des ressources familiales. Elles couvrent les frais de scolarité et parfois l'hébergement. Conditions : Être inscrit dans un établissement d'enseignement supérieur, avoir moins de 28 ans (sauf exceptions), ressources familiales inférieures à un plafond. Pour faire une demande, visitez <a href='https://www.crous.fr/' target='_blank'>le site du CROUS</a>. <br><br><strong>Guide étape par étape pour demander des bourses sur critères sociaux :</strong><br>1. Connectez-vous sur crous.fr avec vos identifiants Parcoursup.<br>2. Remplissez le Dossier Social Étudiant (DSE) en ligne.<br>3. Fournissez les justificatifs demandés (avis d'imposition des parents, etc.).<br>4. Soumettez votre demande et attendez la notification de décision.<br><br><strong>Montants :</strong> De 1 000€ à 5 500€ par an selon l'échelon.<br><strong>Conseils :</strong> Faites la demande dès l'inscription. Pensez aux aides complémentaires comme les bourses au mérite.">📚 Bourses sur critères sociaux</button>
                 <button class="sub-button" data-sub="bourse-merite" data-text="La bourse au mérite récompense les excellents résultats scolaires. Elle est versée en plus de la bourse sur critères sociaux. Conditions : Avoir obtenu une mention Très Bien au baccalauréat, être boursier sur critères sociaux, poursuivre des études supérieures. Montant : 900€ par an. Demande via le CROUS après inscription. Visitez <a href='https://www.crous.fr/' target='_blank'>crous.fr</a> pour plus d'infos.">🏆 Bourse au mérite</button>
@@ -98,9 +91,9 @@
         </section>
     </div>
     <div id="droit-travail" class="tab-content">
-        <section>
-            <h3>Droit du travail</h3>
-            <p>Informations sur les contrats de travail, licenciements, droits sociaux.</p>
+        <section class="content">
+            <h2>Droit du travail</h2>
+            <p>Informations sur les contrats de travail, licenciements, droits sociaux. <a href="#" class="connexion-link">Connexion</a> | <a href="#" class="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="contrat-travail" title="Accord définissant les droits et obligations entre employeur et salarié." data-text="Le contrat de travail définit les droits et obligations de l'employeur et du salarié. Il doit être écrit pour les CDI. Vérifiez les clauses sur la rémunération, les horaires et les congés. Pour plus d'informations, consultez <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour comprendre et rédiger un contrat de travail :</strong><br>1. Consultez les modèles et informations sur service-public.fr.<br>2. Discutez des termes avec votre employeur.<br>3. Assurez-vous que toutes les clauses légales sont incluses.<br>4. Conservez une copie signée de votre contrat.<br><br><strong>Éléments obligatoires :</strong> Identité des parties, lieu de travail, durée, rémunération, horaires.<br><strong>Conseils :</strong> Faites relire par un avocat si nécessaire. Pensez à la période d'essai.">📋 Contrat de travail</button>
                 <button class="sub-button" data-sub="licenciement" title="Rupture du contrat de travail par l'employeur avec justification." data-text="Le licenciement doit être justifié et respecter la procédure légale. En cas de licenciement abusif, vous pouvez contester devant les prud'hommes. Conservez tous les documents relatifs à votre emploi. Découvrez vos droits sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide en cas de licenciement :</strong><br>1. Recevez la lettre de licenciement et vérifiez sa conformité.<br>2. Consultez service-public.fr pour vos droits (indemnités, préavis).<br>3. Si abusif, contactez un syndicat ou avocat pour contester.<br>4. Déposez un recours aux prud'hommes si nécessaire.<br><br><strong>Préavis :</strong> Variable selon l'ancienneté (1 à 3 mois).<br><strong>Indemnités :</strong> Selon la convention collective. Minimum légal pour licenciement économique.">🚪 Licenciement</button>
@@ -111,15 +104,15 @@
         </section>
     </div>
     <div id="motifs-infraction" class="tab-content">
-        <section>
-            <h3>Motifs d'infraction</h3>
-            <p>Explications des infractions courantes et leurs conséquences.</p>
+        <section class="content">
+            <h2>Motifs d'infraction</h2>
+            <p>Explications des infractions courantes et leurs conséquences. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
         </section>
     </div>
     <div id="droit-routier" class="tab-content">
-        <section>
-            <h3>Droit routier</h3>
-            <p>Règles de circulation, permis de conduire, amendes.</p>
+        <section class="content">
+            <h2>Droit routier</h2>
+            <p>Règles de circulation, permis de conduire, amendes. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="permis-conduire" title="Autorisation de conduire un véhicule motorisé après formation et examen." data-text="Le permis de conduire est obligatoire pour conduire un véhicule. Il existe plusieurs catégories (B pour voiture). Passez le code en ligne et la conduite avec un moniteur agréé. Pour les démarches, allez sur <a href='https://ants.gouv.fr/' target='_blank'>ants.gouv.fr</a>. <br><br><strong>Guide étape par étape pour obtenir le permis de conduire :</strong><br>1. Inscrivez-vous à l'examen du code sur ants.gouv.fr.<br>2. Passez et réussissez l'examen théorique.<br>3. Choisissez une auto-école et suivez la formation pratique.<br>4. Passez l'examen pratique et recevez votre permis.">🚗 Permis de conduire</button>
                 <button class="sub-button" data-sub="regles-circulation" title="Règles à respecter pour circuler en sécurité sur la route." data-text="Les règles de circulation incluent la priorité, les limitations de vitesse et les feux tricolores. Respectez-les pour éviter les accidents et les amendes. Consultez le code de la route sur <a href='https://www.securite-routiere.gouv.fr/' target='_blank'>securite-routiere.gouv.fr</a>. <br><br><strong>Guide pour connaître les règles de circulation :</strong><br>1. Téléchargez ou consultez le code de la route sur securite-routiere.gouv.fr.<br>2. Étudiez les chapitres sur la signalisation et les priorités.<br>3. Passez le test en ligne pour vérifier vos connaissances.<br>4. Respectez toujours les règles pour votre sécurité et celle des autres.<br><br><strong>Rappels importants :</strong> Vitesse limitée à 50km/h en ville, port de ceinture obligatoire, interdiction du téléphone au volant.<br><strong>Conseils :</strong> Utilisez des applications pour connaître les radars. Pensez à l'assurance responsabilité civile obligatoire.">🚦 Règles de circulation</button>
@@ -130,15 +123,15 @@
         </section>
     </div>
     <div id="assurance-demarches-telephoniques" class="tab-content">
-        <section>
-            <h3>Assurance et démarches téléphoniques</h3>
-            <p>Guides pour souscrire à une assurance et effectuer des démarches par téléphone.</p>
+        <section class="content">
+            <h2>Assurance et démarches téléphoniques</h2>
+            <p>Guides pour souscrire à une assurance et effectuer des démarches par téléphone. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
         </section>
     </div>
     <div id="droit-voyage" class="tab-content">
-        <section>
-            <h3>Droit en voyage</h3>
-            <p>Droits des voyageurs, assurances voyage, formalités.</p>
+        <section class="content">
+            <h2>Droit en voyage</h2>
+            <p>Droits des voyageurs, assurances voyage, formalités. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="annulation-vol" title="Compensation pour annulation de vol selon le règlement européen." data-text="En cas d'annulation de vol, vous avez droit à une compensation selon le règlement européen 261/2004. Le montant dépend de la distance et du préavis. Contactez la compagnie aérienne pour réclamer. Gardez tous les justificatifs. Pour plus d'informations, consultez <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour réclamer une compensation en cas d'annulation de vol :</strong><br>1. Conservez votre carte d'embarquement et tout justificatif.<br>2. Contactez la compagnie aérienne dans les délais (généralement 3 ans).<br>3. Fournissez les détails du vol et demandez la compensation.<br>4. Si refus, faites appel à un médiateur ou tribunal.<br><br><strong>Montants :</strong> 125€ pour <1500km, 250€ pour 1500-3500km, 600€ pour >3500km.<br><strong>Conditions :</strong> Annulation moins de 14 jours avant, ou retard >3h à destination.<br><strong>Conseils :</strong> Utilisez des sites comme AirHelp pour assistance.">✈️ Annulation de vol</button>
                 <button class="sub-button" data-sub="perte-bagage" title="Indemnisation pour perte de bagages en voyage." data-text="Si votre bagage est perdu, déclarez-le immédiatement à l'aéroport. La compagnie doit indemniser jusqu'à 1414€ par passager. Fournissez une déclaration de perte et une liste des objets. L'indemnisation peut prendre du temps. Découvrez vos droits sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide en cas de perte de bagage :</strong><br>1. Déclarez la perte immédiatement au comptoir de la compagnie.<br>2. Obtenez un Property Irregularity Report (PIR).<br>3. Fournissez une liste détaillée des objets perdus.<br>4. Suivez l'indemnisation via le site de la compagnie ou service-public.fr.<br><br><strong>Délais :</strong> Déclaration dans les 7 jours, indemnisation sous 21 jours.<br><strong>Conseils :</strong> Prenez des photos des bagages et objets. Gardez les reçus pour faciliter les réclamations.">🧳 Perte de bagage</button>
@@ -149,9 +142,9 @@
         </section>
     </div>
     <div id="outils-gratuits-etudiants" class="tab-content">
-        <section>
-            <h3>Outils gratuits pour les étudiants</h3>
-            <p>Ressources et outils en ligne gratuits pour aider les étudiants.</p>
+        <section class="content">
+            <h2>Outils gratuits pour les étudiants</h2>
+            <p>Ressources et outils en ligne gratuits pour aider les étudiants. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="bourses-et-aides" title="Aides financières et bourses pour les étudiants." data-text="Les étudiants peuvent bénéficier de bourses sur critères sociaux, mérite, ou mobilité. Pour les bourses CROUS, déposez votre demande sur <a href='https://www.crous-paris.fr/' target='_blank'>crous.fr</a>. Les aides comme APL étudiante sont cumulables. Découvrez les conditions sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour obtenir des bourses et aides :</strong><br>1. Vérifiez votre éligibilité via le simulateur sur etudiant.gouv.fr.<br>2. Rassemblez les documents (avis fiscal, certificat de scolarité).<br>3. Déposez votre DSE (Dossier Social Étudiant) en ligne.<br>4. Suivez l'état de votre demande sur le portail.<br><br><strong>Types de bourses :</strong> Bourse sur critères sociaux (0-5000€/an), bourse au mérite, aide à la mobilité.<br><strong>Conditions :</strong> Revenus familiaux < à un plafond, nationalité française ou UE.<br><strong>Conseils :</strong> Demandez dès l'inscription, renouvelable chaque année.">🎓 Bourses et aides financières</button>
                 <button class="sub-button" data-sub="logiciels-educatifs" title="Accès gratuit à des logiciels pour les étudiants." data-text="De nombreux logiciels éducatifs sont gratuits pour les étudiants : Office 365 via votre université, GitHub Student Pack avec accès à des outils comme JetBrains, Adobe Creative Cloud, etc. Inscrivez-vous avec votre email étudiant. Plus d'infos sur <a href='https://education.github.com/pack' target='_blank'>github.com</a>. <br><br><strong>Guide pour accéder aux logiciels éducatifs gratuits :</strong><br>1. Vérifiez si votre établissement propose des licences (ex: Microsoft Imagine).<br>2. Inscrivez-vous au GitHub Student Pack avec preuve étudiante.<br>3. Téléchargez les logiciels depuis les sites officiels.<br>4. Utilisez des alternatives open-source comme LibreOffice ou GIMP.<br><br><strong>Outils populaires :</strong> VS Code, IntelliJ IDEA, Figma, Canva Pro, etc.<br><strong>Conseils :</strong> Gardez votre carte étudiante à jour pour renouveler les accès.">💻 Logiciels éducatifs gratuits</button>
@@ -161,9 +154,9 @@
         </section>
     </div>
     <div id="demarche-retraite" class="tab-content">
-        <section>
-            <h3>Démarche pour obtenir la retraite</h3>
-            <p>Étapes pour demander sa retraite et conditions requises.</p>
+        <section class="content">
+            <h2>Démarche pour obtenir la retraite</h2>
+            <p>Étapes pour demander sa retraite et conditions requises. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="conditions-retraite" title="Conditions pour bénéficier d'une retraite à taux plein." data-text="Pour bénéficier d'une retraite à taux plein, vous devez avoir cotisé au moins 172 trimestres (43 ans) et atteint l'âge légal (62 ans en 2023, évolutif). Les conditions varient selon votre carrière. Simulez sur <a href='https://www.lassuranceretraite.fr/' target='_blank'>lassuranceretraite.fr</a>. <br><br><strong>Guide pour vérifier vos droits à la retraite :</strong><br>1. Connectez-vous à votre compte retraite sur info-retraite.fr.<br>2. Consultez votre relevé de carrière.<br>3. Utilisez le simulateur pour estimer votre pension.<br>4. Rassemblez vos justificatifs (bulletins de salaire, attestations).<br><br><strong>Âge légal :</strong> 62 ans, mais peut être repoussé selon la génération.<br><strong>Trimestres requis :</strong> 172 pour taux plein, moins pour carrière longue.<br><strong>Conseils :</strong> Anticipez en cotisant volontairement si nécessaire.">📅 Conditions pour la retraite</button>
                 <button class="sub-button" data-sub="demande-retraite" title="Procédure pour faire une demande de retraite." data-text="La demande de retraite se fait en ligne via info-retraite.fr ou par courrier. Préparez vos documents : carte d'identité, relevé de carrière, RIB. Le délai de traitement est d'environ 3 mois. Plus d'infos sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour demander votre retraite :</strong><br>1. Créez un compte sur info-retraite.fr.<br>2. Remplissez le formulaire de demande en ligne.<br>3. Joignez les pièces justificatives numérisées.<br>4. Signez électroniquement et envoyez.<br><br><strong>Documents nécessaires :</strong> Pièce d'identité, numéro de sécurité sociale, relevé de carrière.<br><strong>Délais :</strong> Demande 3-6 mois avant la date souhaitée.<br><strong>Conseils :</strong> Vérifiez auprès de toutes vos caisses de retraite (salarié, indépendant, etc.).">📝 Demander sa retraite</button>
@@ -173,9 +166,9 @@
         </section>
     </div>
     <div id="droit-proprietaires" class="tab-content">
-        <section>
-            <h3>Droit des propriétaires</h3>
-            <p>Droits et obligations des propriétaires immobiliers.</p>
+        <section class="content">
+            <h2>Droit des propriétaires</h2>
+            <p>Droits et obligations des propriétaires immobiliers. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="expulsion-locataire" title="Procédure pour expulser un locataire défaillant." data-text="Pour expulser un locataire, suivez la procédure légale : commandement de payer, puis assignation en justice. Vous devez respecter les délais et formes. Consultez un huissier ou avocat. Plus d'infos sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour expulser un locataire :</strong><br>1. Envoyez un commandement de payer par huissier.<br>2. Si non paiement, faites assigner en justice.<br>3. Obtenez un jugement d'expulsion.<br>4. Faites exécuter par un huissier avec force publique si nécessaire.<br><br><strong>Délais :</strong> 2 mois pour payer après commandement.<br><strong>Conditions :</strong> Loyers impayés, troubles de voisinage graves.<br><strong>Conseils :</strong> Documentez tout (preuves d'impayés, témoignages).">🏠 Expulsion d'un locataire</button>
                 <button class="sub-button" data-sub="charges-copropriete" title="Répartition et gestion des charges dans une copropriété." data-text="Les charges de copropriété incluent l'entretien commun, assurances, chauffage collectif. Elles sont réparties selon les tantièmes. Le syndic gère la comptabilité. En cas de litige, assemblez générale. Découvrez sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour gérer les charges de copropriété :</strong><br>1. Consultez le règlement de copropriété.<br>2. Vérifiez les appels de fonds du syndic.<br>3. Participez aux assemblées générales.<br>4. Contestez les charges excessives en justice si nécessaire.<br><br><strong>Répartition :</strong> Selon tantièmes (millièmes) pour chaque lot.<br><strong>Types :</strong> Charges générales (entretien), spéciales (ascenseur).<br><strong>Conseils :</strong> Demandez un état daté pour connaître l'historique des charges.">💸 Charges de copropriété</button>
@@ -185,9 +178,9 @@
         </section>
     </div>
     <div id="droit-famille" class="tab-content">
-        <section>
-            <h3>Droit de la famille</h3>
-            <p>Informations sur le mariage, divorce, garde d'enfants.</p>
+        <section class="content">
+            <h2>Droit de la famille</h2>
+            <p>Informations sur le mariage, divorce, garde d'enfants. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="mariage" title="Union civile entre deux personnes avec effets juridiques." data-text="Le mariage civil se déroule à la mairie avec publication des bans. Préparez acte de naissance, pièce d'identité, certificat de célibat. Les époux choisissent un régime matrimonial. Plus d'infos sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour se marier :</strong><br>1. Déclarez votre projet à la mairie.<br>2. Publiez les bans (10 jours minimum).<br>3. Rassemblez les documents requis.<br>4. Célébrez le mariage civil à la mairie.<br><br><strong>Documents :</strong> Acte de naissance, pièce d'identité, justificatif de domicile.<br><strong>Régimes :</strong> Communauté légale, séparation de biens, participation aux acquêts.<br><strong>Conseils :</strong> Consultez un notaire pour le contrat de mariage.">💍 Mariage</button>
                 <button class="sub-button" data-sub="divorce" title="Dissolution du mariage par décision judiciaire." data-text="Le divorce peut être par consentement mutuel, accepté, ou contentieux. Les procédures varient selon la situation. Un avocat est obligatoire. La durée moyenne est de 6-12 mois. Découvrez les démarches sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour divorcer :</strong><br>1. Consultez un avocat pour la procédure adaptée.<br>2. Déposez la requête auprès du tribunal.<br>3. Négociez la convention (pension, garde).<br>4. Obtenez le jugement de divorce.<br><br><strong>Types :</strong> Consentement mutuel, acceptation, altération lien, faute.<br><strong>Coûts :</strong> Avocat (1000-3000€), frais de justice.<br><strong>Conseils :</strong> Médiation possible pour éviter le contentieux.">📜 Divorce</button>
@@ -197,9 +190,9 @@
         </section>
     </div>
     <div id="droit-immobilier" class="tab-content">
-        <section>
-            <h3>Droit immobilier</h3>
-            <p>Achat, vente, location de biens immobiliers.</p>
+        <section class="content">
+            <h2>Droit immobilier</h2>
+            <p>Achat, vente, location de biens immobiliers. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="achat-immobilier" title="Acquisition d'un bien immobilier avec prêt et notaire." data-text="Pour acheter un bien, faites une offre, signez un compromis, puis l'acte authentique chez le notaire. Obtenez un prêt bancaire. Vérifiez le diagnostic technique. Plus d'infos sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour acheter un immobilier :</strong><br>1. Définissez votre budget et obtenez un prêt.<br>2. Recherchez des biens avec une agence ou en ligne.<br>3. Faites une offre d'achat.<br>4. Signez le compromis de vente.<br>5. Réalisez les diagnostics obligatoires.<br>6. Signez l'acte chez le notaire.<br><br><strong>Documents :</strong> Compromis, diagnostics (amiante, termites, etc.), titre de propriété.<br><strong>Coûts :</strong> Notaire (7-8%), frais d'agence (3-8%).<br><strong>Conseils :</strong> Faites appel à un avocat ou notaire pour vérifier le bien.">🏡 Achat immobilier</button>
                 <button class="sub-button" data-sub="vente-immobilier" title="Cession d'un bien immobilier avec agence et notaire." data-text="Pour vendre, estimez le prix, mandatez une agence, organisez des visites, signez le compromis et l'acte. Déclarez la vente aux impôts. Découvrez sur <a href='https://www.service-public.fr/particuliers/vosdroits/N11' target='_blank'>service-public.fr</a>. <br><br><strong>Guide pour vendre un immobilier :</strong><br>1. Estimez la valeur du bien.<br>2. Mandatez une agence immobilière.<br>3. Préparez les diagnostics.<br>4. Organisez les visites.<br>5. Acceptez une offre et signez le compromis.<br>6. Signez l'acte de vente chez le notaire.<br><br><strong>Impôts :</strong> Plus-values taxées selon durée de détention.<br><strong>Documents :</strong> Titre de propriété, diagnostics, attestation copropriété.<br><strong>Conseils :</strong> Nettoyez et valorisez le bien pour les visites.">🏘️ Vente immobilier</button>
@@ -210,9 +203,9 @@
     </div>
 
     <div id="loi-et-justice" class="tab-content">
-        <section>
-            <h3>Loi et Justice</h3>
-            <p>Accès aux lois et réglementations du barreau. Réservé aux utilisateurs premium.</p>
+        <section class="content">
+            <h2>Loi et Justice</h2>
+            <p>Accès aux lois et réglementations du barreau. Réservé aux utilisateurs premium. <a href="#" class="connexion-link">Connexion</a> | <a href="#" id="premium-link">Passer à Premium</a></p>
             <div class="sub-buttons">
                 <button class="sub-button" data-sub="droit-civil" title="Régit les relations privées entre individus." data-text="Le droit civil régit les relations entre particuliers. Lois clés pour le barreau : Code civil (articles 1 à 1386), contrats, responsabilité civile, successions. <br><br><strong>Lois strictes à connaître :</strong><br>- Article 1108 CC : Conditions de validité des contrats (consentement, capacité, objet, cause).<br>- Article 1142 CC : Responsabilité contractuelle.<br>- Article 1240 CC : Responsabilité délictuelle.<br>- Article 515-1 CC : Définition du mariage.<br>- Article 720 CC : Ouverture de la succession.<br><br><strong>Conseils pour le barreau :</strong> Maîtrisez les principes généraux (liberté contractuelle, bonne foi) et les cas pratiques (contrats synallagmatiques, vices du consentement).">⚖️ Droit civil</button>
                 <button class="sub-button" data-sub="droit-penal" title="Sanctionne les comportements contraires à la loi pénale." data-text="Le droit pénal sanctionne les infractions. Lois clés : Code pénal (articles 111-1 à 727-2), procédure pénale. <br><br><strong>Lois strictes à connaître :</strong><br>- Article 121-3 CP : Responsabilité pénale (intention, imprudence).<br>- Article 122-1 CP : Légitime défense.<br>- Article 132-1 CP : Peines principales (emprisonnement, amende).<br>- Article 221-1 CP : Homicide volontaire.<br>- Article 311-1 CP : Vol.<br><br><strong>Conseils pour le barreau :</strong> Étudiez les éléments constitutifs des infractions (élément légal, matériel, moral) et les causes d'irresponsabilité pénale.">🚔 Droit pénal</button>

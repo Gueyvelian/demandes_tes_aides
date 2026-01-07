@@ -447,7 +447,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Gestion du menu burger
+    // Gestion des liens connexion et premium
+    document.querySelectorAll('.connexion-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchToTab('connexion');
+        });
+    });
+
+    document.querySelectorAll('.premium-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchToTab('connexion');
+        });
+    });
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const sideMenu = document.getElementById('side-menu');
